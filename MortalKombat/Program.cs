@@ -1,13 +1,19 @@
-﻿namespace MortalKombat
+﻿using MortalKombat.Fighters;
+
+namespace MortalKombat
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Fighter f1 = new Fighter("Scorpion", 100f, 35f, Category.Assassin);
+            /*Fighter f1 = new Fighter("Scorpion", 100f, 35f, Category.Assassin);
             Fighter f2 = new Fighter("Raiden", 80f, 45f, Category.Mage);
             Fighter f3 = new Fighter("Sub-Zero", 130f, 25f, Category.Ninja);
-            Fighter f4 = new Fighter("Liu Kang", 120f, 50f, Category.Warrior);
+            Fighter f4 = new Fighter("Liu Kang", 120f, 50f, Category.Warrior);*/
+            Fighter f1 = new Warrior("Scorpion", 1, 2);
+            Fighter f2 = new Warrior("Liu Kang", 3, 3);
+            Fighter f3 = new Archer("Varus", 3);
+            Fighter f4 = new Archer("Draven", 1);
             List<Fighter> fightersList = new List<Fighter>();
             fightersList.Add(f1);
             fightersList.Add(f2);

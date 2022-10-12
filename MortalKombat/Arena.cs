@@ -85,9 +85,18 @@ namespace MortalKombat
                 Fighter fighter1 = firstTeam[player1];
                 Fighter fighter2 = secondTeam[player2];
 
-                float daune1 = random.Next(0, (int)fighter1.Power);
-                Console.WriteLine($"1. {fighter1.Name} a cauzat {daune1} daune lui {fighter2.Name}!");
-                fighter2.HP -= daune1;
+                int abilityChance = random.Next(0, fighter1.Agility);
+                if(abilityChance > fighter1.Agility / 2) 
+                {
+                    fighter1.SpecialAbility(fighter2);
+                }
+                else
+                {
+					float daune1 = random.Next((int)fighter1.Power / 3, (int)fighter1.Power);
+					Console.WriteLine($"1. {fighter1.Name} a cauzat {daune1} daune lui {fighter2.Name}!");
+					fighter2.HP -= daune1;
+				}
+                
                 if (fighter2.HP <= 0f)
                 {
                     Console.WriteLine($"{fighter2.Name} a fost ucis!");
@@ -96,9 +105,17 @@ namespace MortalKombat
                 }
                 else
                 {
-                    float daune2 = random.Next(0, (int)fighter2.Power);
-                    Console.WriteLine($"2. {fighter2.Name} a ripostat impotriva lui {fighter1.Name} provocand daune de {daune2}!");
-                    fighter1.HP -= daune2;
+					int abilityChance2 = random.Next(0, fighter2.Agility);
+					if (abilityChance2 > fighter2.Agility / 2)
+					{
+						fighter2.SpecialAbility(fighter1);
+                    }
+                    else
+                    {
+						float daune2 = random.Next((int)fighter2.Power / 3, (int)fighter2.Power);
+						Console.WriteLine($"2. {fighter2.Name} a ripostat impotriva lui {fighter1.Name} provocand daune de {daune2}!");
+						fighter1.HP -= daune2;
+					}
                     if (fighter1.HP <= 0f)
                     {
                         Console.WriteLine($"{fighter1.Name} a fost ucis!");

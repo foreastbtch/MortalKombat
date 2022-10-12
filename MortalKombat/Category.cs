@@ -12,6 +12,7 @@ namespace MortalKombat
         Ninja,
         Assassin,
         Monster,
-        Mage
+        Mage,
+        Archer
     }
 }
