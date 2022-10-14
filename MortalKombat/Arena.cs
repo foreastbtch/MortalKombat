@@ -86,37 +86,54 @@ namespace MortalKombat
                 Fighter fighter2 = secondTeam[player2];
 
                 int abilityChance = random.Next(0, fighter1.Agility);
-                if(abilityChance > fighter1.Agility / 2) 
+                if(abilityChance > 0.75 * fighter1.Agility) 
                 {
-                    fighter1.SpecialAbility(fighter2);
+                    fighter1.SpecialAbility(fighter2, secondTeam);
                 }
                 else
                 {
 					float daune1 = random.Next((int)fighter1.Power / 3, (int)fighter1.Power);
-					Console.WriteLine($"1. {fighter1.Name} a cauzat {daune1} daune lui {fighter2.Name}!");
-					fighter2.HP -= daune1;
+					var defendChance = random.Next(0, fighter2.Agility);
+					if (defendChance > 0.6 * fighter2.Agility)
+					{
+						fighter2.Deff(daune1, fighter1);
+                    }
+                    else
+                    {
+						Console.WriteLine($"1. {fighter1.Name} a cauzat {daune1} daune lui {fighter2.Name}!");
+						fighter2.HP -= daune1;
+					}
 				}
-                
-                if (fighter2.HP <= 0f)
+				fighter2.GotHit(fighter1);
+				if (fighter2.HP <= 0f)
                 {
                     Console.WriteLine($"{fighter2.Name} a fost ucis!");
                     secondTeam.Remove(fighter2);
                     Console.WriteLine();
-                }
+				}
                 else
                 {
 					int abilityChance2 = random.Next(0, fighter2.Agility);
-					if (abilityChance2 > fighter2.Agility / 2)
+					if (abilityChance2 > 0.75 * fighter2.Agility)
 					{
-						fighter2.SpecialAbility(fighter1);
+						fighter2.SpecialAbility(fighter1, firstTeam);
                     }
                     else
                     {
 						float daune2 = random.Next((int)fighter2.Power / 3, (int)fighter2.Power);
-						Console.WriteLine($"2. {fighter2.Name} a ripostat impotriva lui {fighter1.Name} provocand daune de {daune2}!");
-						fighter1.HP -= daune2;
+                        var defendChance = random.Next(0, fighter1.Agility);
+                        if (defendChance > 0.6 * fighter1.Agility)
+                        {
+                            fighter1.Deff(daune2, fighter2);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"2. {fighter2.Name} a ripostat impotriva lui {fighter1.Name} provocand daune de {daune2}!");
+                            fighter1.HP -= daune2;
+                        }
 					}
-                    if (fighter1.HP <= 0f)
+					fighter1.GotHit(fighter2);
+					if (fighter1.HP <= 0f)
                     {
                         Console.WriteLine($"{fighter1.Name} a fost ucis!");
                         firstTeam.Remove(fighter1);

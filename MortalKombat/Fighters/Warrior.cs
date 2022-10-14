@@ -10,7 +10,7 @@ namespace MortalKombat.Fighters
 	{
 		int GradArmura;//1,2,3
 		int GradArma;//1,2,3
-		public Warrior(string name, int gradArmura, int gradArma) : base(name, 450, 80, Category.Warrior, 15)
+		public Warrior(string name, int gradArmura, int gradArma) : base(name, 3500, 70, Category.Warrior, 15)
 		{
 			GradArmura = gradArmura;
 			GradArma = gradArma;
@@ -50,9 +50,15 @@ namespace MortalKombat.Fighters
 			return new Warrior(Name, GradArmura, GradArma);
 		}
 
-		public override void Deff(float attack)
+		public override void Deff(float attack, Fighter enemy)
 		{
+			Console.WriteLine($"{Name} pareaza lovitura lui {enemy.Name} si primeste doar 25% damage");
 			HP -= 0.25f * attack;
+		}
+
+		public override void GotHit(Fighter fighter)
+		{
+			
 		}
 
 		public override void SayLine()
@@ -60,21 +66,22 @@ namespace MortalKombat.Fighters
 			Console.WriteLine($"{Name}: I am a warrior.");
 		}
 
-		public override void SpecialAbility(Fighter fighter)
+		public override void SpecialAbility(Fighter fighter, List<Fighter> enemies)
 		{
 			var random = new Random();
 			if (fighter.GetType() == typeof(Archer))
 			{
 				Console.WriteLine();
 				Console.WriteLine($"[SPECIAL ABILITY] {Name} a sarit langa {fighter.Name} si a aplicat atacul surpriza - {Power * 1.5f} daune");
+				Console.WriteLine();
 				fighter.HP -= Power * 1.5f;
 			}
-			/*else
+			else
 			{
 				float daune1 = random.Next((int)Power / 3, (int)Power);
-				Console.WriteLine($"1. {Name} a cauzat {daune1} daune lui {fighter.Name}!");
+				Console.WriteLine($"Special ability. {Name} a cauzat {daune1} daune lui {fighter.Name}!");
 				fighter.HP -= daune1;
-			}*/
+			}
 		}
 	}
 }

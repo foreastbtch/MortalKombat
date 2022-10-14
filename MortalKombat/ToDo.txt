@@ -1,0 +1,22 @@
+﻿1. sa cream clasele de Tipuri de luptatori, 
+avand o clasa de baza in care sa tineti 
+metodele si proprietatile comune claselor de lupta 
+si sa aveti minim 3 clase copil care sa intre efectiv in lupta;
+
+5. Pentru cei care sunt deja avansati cu temele uitati cateva idei in care ar putea merge jocul vostru: 
+-incercati sa aveti 5 tipuri de luptatori;  
+-poate adaugati abilitatea de a para loviturile (sau doar anumite tipuri); 
+-poate adaugati abilitatea de a se feri de lovituri sau de a incepe primul lupta pentru jucatorii mai agili; 
+-poate adaugati posibilitatea de speciale 
+(idei de prin jocuri: barbarian-ul sa aiba Rage dupa 
+mai multe lovituri primite, mag-ul sa faca self-healing daca are mana, 
+arcasul sa dea multishoot care poate fi cool in 2 vs 2 etc, adaugati voi)
+
+1. Revizuiti tot codul si ganditi-va daca e safe, 
+sau ar mai trebui sa mai puneti un try...catch/finally pe ici pe colo; 
+
+2. Faceti global exception handling la aplicatie asa cum am facut la curs si logati eroarea in consola; 
+
+3. Faceti refactoring plecand de la code smells pe care le-am discutat la curs; 
+
+4. Adaugati unit teste pentru clasele Arena si Fighteri (si pentru alte clase daca le considerati relevante).

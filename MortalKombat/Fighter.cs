@@ -38,8 +38,10 @@ namespace MortalKombat
         /*{
             return new Fighter(Name, HP, Power, Category);
         }*/
-        public abstract void SpecialAbility(Fighter fighter);
-        public abstract void Deff(float attack);
+        public abstract void SpecialAbility(Fighter fighter, List<Fighter> enemies);
+        public abstract void Deff(float attack, Fighter enemy);
         public abstract void SayLine();
+
+        public abstract void GotHit(Fighter fighter);
     }
 }
