@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MortalKombat
 {
-    public enum Category
-    {
-        Warrior,
-        Ninja,
-        Assassin,
-        Monster,
-        Mage,
-        Archer
-    }
+	public enum Category
+	{
+		Warrior,
+		Ninja,
+		Assassin,
+		Monster,
+		Mage,
+		Archer
+	}
 }

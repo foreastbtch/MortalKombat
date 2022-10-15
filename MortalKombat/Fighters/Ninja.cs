@@ -8,12 +8,12 @@ namespace MortalKombat.Fighters
 {
 	internal class Ninja : Fighter
 	{
-		public int GradShuriken;
+		private readonly int gradShuriken;
 
 		public Ninja(string name, int gradShuriken) : base(name, 2000, 60, Category.Ninja, 50)
 		{
-			this.GradShuriken = gradShuriken;
-			switch (GradShuriken)
+			this.gradShuriken = gradShuriken;
+			switch (this.gradShuriken)
 			{
 				case 1:
 					Power *= 1.75f;
@@ -33,12 +33,12 @@ namespace MortalKombat.Fighters
 
 		public override object Clone()
 		{
-			return new Ninja(Name, GradShuriken);
+			return new Ninja(Name, gradShuriken);
 		}
 
 		public override void Deff(float attack, Fighter enemy)
 		{
-			if(2 * Agility < attack)
+			if (2 * Agility < attack)
 			{
 				Console.WriteLine($"{Name} pareaza lovitura lui {enemy.Name} si primeste 70% damage");
 				HP -= 0.7f * attack;
@@ -51,7 +51,7 @@ namespace MortalKombat.Fighters
 
 		public override void GotHit(Fighter fighter)
 		{
-			
+
 		}
 
 		public override void SayLine()
@@ -61,12 +61,12 @@ namespace MortalKombat.Fighters
 
 		public override void SpecialAbility(Fighter fighter, List<Fighter> enemies)
 		{
-			if(Agility > 1.5f * fighter.Agility)
+			if (Agility > 1.5f * fighter.Agility)
 			{
 				Console.WriteLine();
 				Console.WriteLine($"[SPECIAL ABILITY] {Name} a sarit langa {fighter.Name} si a aplicat atacul dublu - {Power * 2f} daune");
 				Console.WriteLine();
-				fighter.HP -= 2 * Power;// double attack
+				fighter.HP -= 2 * Power;
 			}
 		}
 	}

@@ -8,14 +8,14 @@ namespace MortalKombat.Fighters
 {
 	internal class Monster : Fighter
 	{
-		int rage;
-		public int GradArmura;
+		private int rage;
+		private readonly int gradArmura;
 
 		public Monster(string name, int gradArmura) : base(name, 5000, 50, Category.Monster, 5)
 		{
-			GradArmura = gradArmura;
+			this.gradArmura = gradArmura;
 			rage = 0;
-			switch (GradArmura)
+			switch (this.gradArmura)
 			{
 				case 1:
 					HP *= 1.75f;
@@ -34,14 +34,13 @@ namespace MortalKombat.Fighters
 
 		public override object Clone()
 		{
-			return new Monster(Name, GradArmura);
+			return new Monster(Name, gradArmura);
 		}
 
 		public override void Deff(float attack, Fighter enemy)
 		{
 			Console.WriteLine($"{Name} pareaza lovitura lui {enemy.Name} si primeste doar 5% daune");
 			HP -= 0.05f * attack;
-			//rage += 1;
 		}
 
 		public override void SayLine()
@@ -51,7 +50,6 @@ namespace MortalKombat.Fighters
 
 		public override void SpecialAbility(Fighter fighter, List<Fighter> enemies)
 		{
-			//fura 20% din puterea adversarului
 			if (rage >= 3)
 			{
 				Console.WriteLine();

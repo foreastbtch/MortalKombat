@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace MortalKombat.Fighters
 {
-	internal class Archer : Fighter, ICloneable
+	internal class Archer : Fighter
 	{
-		int GradArc;
+		private readonly int gradArc;
 
 		public Archer(string name, int gradArc) : base(name, 2800, 100, Category.Archer, 30)
 		{
-			GradArc = gradArc;
-			switch (GradArc)
+			this.gradArc = gradArc;
+			switch (this.gradArc)
 			{
 				case 1:
 					Power *= 1.25f;
@@ -31,7 +31,7 @@ namespace MortalKombat.Fighters
 		}
 		public override object Clone()
 		{
-			return new Archer(Name, GradArc);
+			return new Archer(Name, gradArc);
 		}
 
 		public override void Deff(float attack, Fighter enemy)
@@ -42,7 +42,7 @@ namespace MortalKombat.Fighters
 
 		public override void GotHit(Fighter fighter)
 		{
-			
+
 		}
 
 		public override void SayLine()
@@ -78,11 +78,19 @@ namespace MortalKombat.Fighters
 			}
 		}
 
-		public void MultiShot(List<Fighter> enemies, float damage)
+		public static void MultiShot(List<Fighter> enemies, float damage)
 		{
-			foreach(Fighter fighter in enemies)
+			//enemies = null;
+			try
 			{
-				fighter.HP -= damage;
+				foreach (Fighter fighter in enemies)
+				{
+					fighter.HP -= damage;
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.ToString());
 			}
 		}
 	}

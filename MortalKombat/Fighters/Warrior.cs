@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace MortalKombat.Fighters
 {
-	internal class Warrior : Fighter, ICloneable
+	internal class Warrior : Fighter
 	{
-		int GradArmura;//1,2,3
-		int GradArma;//1,2,3
+		private readonly int gradArmura;
+		private readonly int gradArma;
 		public Warrior(string name, int gradArmura, int gradArma) : base(name, 3500, 70, Category.Warrior, 15)
 		{
-			GradArmura = gradArmura;
-			GradArma = gradArma;
-			switch (GradArmura)
+			this.gradArmura = gradArmura;
+			this.gradArma = gradArma;
+			switch (this.gradArmura)
 			{
 				case 1:
 					HP *= 1.25f;
@@ -29,7 +29,7 @@ namespace MortalKombat.Fighters
 					HP = HP;
 					break;
 			}
-			switch (GradArma)
+			switch (this.gradArma)
 			{
 				case 1:
 					Power *= 1.25f;
@@ -47,7 +47,7 @@ namespace MortalKombat.Fighters
 		}
 		public override object Clone()
 		{
-			return new Warrior(Name, GradArmura, GradArma);
+			return new Warrior(Name, gradArmura, gradArma);
 		}
 
 		public override void Deff(float attack, Fighter enemy)
@@ -58,7 +58,7 @@ namespace MortalKombat.Fighters
 
 		public override void GotHit(Fighter fighter)
 		{
-			
+
 		}
 
 		public override void SayLine()

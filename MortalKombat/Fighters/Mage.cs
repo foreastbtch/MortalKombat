@@ -8,13 +8,13 @@ namespace MortalKombat.Fighters
 {
 	internal class Mage : Fighter
 	{
-		public int GradMagie { get; set; }
-		int mana = 100;
+		private readonly int gradMagie;
+		private int mana = 100;
 
 		public Mage(string name, int gradMagie) : base(name, 2000, 100, Category.Mage, 35)
 		{
-			this.GradMagie = gradMagie;
-			switch (GradMagie)
+			this.gradMagie = gradMagie;
+			switch (this.gradMagie)
 			{
 				case 1:
 					Power *= 1.2f;
@@ -33,12 +33,11 @@ namespace MortalKombat.Fighters
 
 		public override object Clone()
 		{
-			return new Mage(Name, GradMagie);
+			return new Mage(Name, gradMagie);
 		}
 
 		public override void Deff(float attack, Fighter enemy)
 		{
-			//self healing
 			Console.WriteLine($"{Name} absoarbe daunele primite de la {enemy.Name} si isi creste viata cu 50% din atacul primit.");
 			HP += 0.5f * attack;
 			mana -= 20;
@@ -63,7 +62,7 @@ namespace MortalKombat.Fighters
 
 		public override void GotHit(Fighter fighter)
 		{
-			
+
 		}
 	}
 }
