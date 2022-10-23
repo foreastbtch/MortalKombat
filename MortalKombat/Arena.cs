@@ -101,6 +101,38 @@ namespace MortalKombat
 			fighter1.GotHit(fighter2);
 		}
 
+		private void PlayerAttacks(Fighter player, Fighter enemy, List<Fighter> enemyTeam, int teamNumber)
+		{
+			var random = new Random();
+			int abilityChance = random.Next(0, player.Agility);
+			if (abilityChance > 0.75 * player.Agility)
+			{
+				player.SpecialAbility(enemy, enemyTeam);
+			}
+			else
+			{
+				float damage = random.Next((int)player.Power / 3, (int)player.Power);
+				var defendChance = random.Next(0, enemy.Agility);
+				if (defendChance > 0.6 * enemy.Agility)
+				{
+					enemy.Deff(damage, player);
+				}
+				else
+				{
+					if (teamNumber == 1)
+					{
+						Console.WriteLine($"{teamNumber}. {player.Name} a cauzat {damage} daune lui {enemy.Name}!");
+					}
+					else
+					{
+						Console.WriteLine($"{teamNumber}. {player.Name} a ripostat impotriva lui {enemy.Name} provocand daune de {damage}!");
+					}
+					enemy.HP -= damage;
+				}
+			}
+			enemy.GotHit(player);
+		}
+
 		private void Fight()
 		{
 			var random = new Random();
@@ -111,7 +143,8 @@ namespace MortalKombat
 				Fighter fighter1 = FirstTeam[player1];
 				Fighter fighter2 = SecondTeam[player2];
 
-				FirstPlayerAttacks(fighter1, fighter2);
+				//FirstPlayerAttacks(fighter1, fighter2);
+				PlayerAttacks(fighter1, fighter2, SecondTeam, 1);
 				if (fighter2.HP <= 0f)
 				{
 					Console.WriteLine($"{fighter2.Name} a fost ucis!");
@@ -120,7 +153,8 @@ namespace MortalKombat
 				}
 				else
 				{
-					SecondPlayerAttacks(fighter1, fighter2);
+					//SecondPlayerAttacks(fighter1, fighter2);
+					PlayerAttacks(fighter2, fighter1, FirstTeam, 2);
 					if (fighter1.HP <= 0f)
 					{
 						Console.WriteLine($"{fighter1.Name} a fost ucis!");
