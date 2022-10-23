@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MortalKombat
 {
-	internal abstract class Fighter : ICloneable
+	public abstract class Fighter : ICloneable
 	{
 		public string Name { get; set; }
 		public float HP { get; set; }

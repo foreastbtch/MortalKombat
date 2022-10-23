@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MortalKombat.Fighters
 {
-	internal class Mage : Fighter
+	public class Mage : Fighter
 	{
 		private readonly int gradMagie;
 		private int mana = 100;
@@ -57,6 +57,13 @@ namespace MortalKombat.Fighters
 				Console.WriteLine();
 				Power += Power * 0.05f;
 				mana -= 20;
+			}
+			else
+			{
+				var random = new Random();
+				float daune1 = random.Next((int)Power / 3, (int)Power);
+				Console.WriteLine($"Special ability. {Name} a cauzat {daune1} daune lui {fighter.Name}!");
+				fighter.HP -= daune1;
 			}
 		}
 

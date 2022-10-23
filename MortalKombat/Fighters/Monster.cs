@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace MortalKombat.Fighters
 {
-	internal class Monster : Fighter
+	public class Monster : Fighter
 	{
 		private int rage;
 		private readonly int gradArmura;
 
-		public Monster(string name, int gradArmura) : base(name, 5000, 50, Category.Monster, 5)
+		public Monster(string name, int gradArmura) : base(name, 1200, 30, Category.Monster, 5)
 		{
 			this.gradArmura = gradArmura;
 			rage = 0;
@@ -58,6 +58,13 @@ namespace MortalKombat.Fighters
 				Power += fighter.Power * 0.2f;
 				fighter.Power -= fighter.Power * 0.2f;
 				rage = 0;
+			}
+			else
+			{
+				var random = new Random();
+				float daune1 = random.Next((int)Power / 3, (int)Power);
+				Console.WriteLine($"Special ability. {Name} a cauzat {daune1} daune lui {fighter.Name}!");
+				fighter.HP -= daune1;
 			}
 		}
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MortalKombat.Fighters
 {
-	internal class Archer : Fighter
+	public class Archer : Fighter
 	{
 		private readonly int gradArc;
 
@@ -80,7 +80,6 @@ namespace MortalKombat.Fighters
 
 		public static void MultiShot(List<Fighter> enemies, float damage)
 		{
-			//enemies = null;
 			try
 			{
 				foreach (Fighter fighter in enemies)

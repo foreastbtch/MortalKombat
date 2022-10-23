@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace MortalKombat.Fighters
 {
-	internal class Warrior : Fighter
+	public class Warrior : Fighter
 	{
 		private readonly int gradArmura;
 		private readonly int gradArma;
-		public Warrior(string name, int gradArmura, int gradArma) : base(name, 3500, 70, Category.Warrior, 15)
+
+		public Warrior() : base()
+		{
+
+		}
+		public Warrior(string name, int gradArmura, int gradArma) : base(name, 3500, 80, Category.Warrior, 15)
 		{
 			this.gradArmura = gradArmura;
 			this.gradArma = gradArma;

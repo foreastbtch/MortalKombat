@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MortalKombat
 {
-	internal class Arena
+	public class Arena
 	{
 		public List<Fighter> FirstTeam { get; set; }
 		public List<Fighter> SecondTeam { get; set; }
