@@ -40,7 +40,8 @@ namespace MortalKombat.Fighters
 		public override void Deff(float attack, Fighter enemy)
 		{
 			Console.WriteLine($"{Name} pareaza lovitura lui {enemy.Name} si primeste doar 5% daune");
-			HP -= 0.05f * attack;
+			//HP -= 0.05f * attack;
+			this.GotHit(0.05f * attack);
 		}
 
 		public override void SayLine()
@@ -64,12 +65,14 @@ namespace MortalKombat.Fighters
 				var random = new Random();
 				float daune1 = random.Next((int)Power / 3, (int)Power);
 				Console.WriteLine($"Special ability. {Name} a cauzat {daune1} daune lui {fighter.Name}!");
-				fighter.HP -= daune1;
+				//fighter.HP -= daune1;
+				fighter.GotHit(daune1);
 			}
 		}
 
-		public override void GotHit(Fighter fighter)
+		public override void GotHit(float damage)
 		{
+			HP -= damage;
 			rage++;
 		}
 	}

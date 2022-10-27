@@ -38,6 +38,6 @@ namespace MortalKombat
 		public abstract void SpecialAbility(Fighter fighter, List<Fighter> enemies);
 		public abstract void Deff(float attack, Fighter enemy);
 		public abstract void SayLine();
-		public abstract void GotHit(Fighter fighter);
+		public abstract void GotHit(float damage);
 	}
 }

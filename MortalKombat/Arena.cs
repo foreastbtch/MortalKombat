@@ -51,56 +51,6 @@ namespace MortalKombat
 			Generics();
 		}
 
-		private void FirstPlayerAttacks(Fighter fighter1, Fighter fighter2)
-		{
-			var random = new Random();
-			int abilityChance = random.Next(0, fighter1.Agility);
-			if (abilityChance > 0.75 * fighter1.Agility)
-			{
-				fighter1.SpecialAbility(fighter2, SecondTeam);
-			}
-			else
-			{
-				float daune1 = random.Next((int)fighter1.Power / 3, (int)fighter1.Power);
-				var defendChance = random.Next(0, fighter2.Agility);
-				if (defendChance > 0.6 * fighter2.Agility)
-				{
-					fighter2.Deff(daune1, fighter1);
-				}
-				else
-				{
-					Console.WriteLine($"1. {fighter1.Name} a cauzat {daune1} daune lui {fighter2.Name}!");
-					fighter2.HP -= daune1;
-				}
-			}
-			fighter2.GotHit(fighter1);
-		}
-
-		private void SecondPlayerAttacks(Fighter fighter1, Fighter fighter2)
-		{
-			var random = new Random();
-			int abilityChance2 = random.Next(0, fighter2.Agility);
-			if (abilityChance2 > 0.75 * fighter2.Agility)
-			{
-				fighter2.SpecialAbility(fighter1, FirstTeam);
-			}
-			else
-			{
-				float daune2 = random.Next((int)fighter2.Power / 3, (int)fighter2.Power);
-				var defendChance = random.Next(0, fighter1.Agility);
-				if (defendChance > 0.6 * fighter1.Agility)
-				{
-					fighter1.Deff(daune2, fighter2);
-				}
-				else
-				{
-					Console.WriteLine($"2. {fighter2.Name} a ripostat impotriva lui {fighter1.Name} provocand daune de {daune2}!");
-					fighter1.HP -= daune2;
-				}
-			}
-			fighter1.GotHit(fighter2);
-		}
-
 		private void PlayerAttacks(Fighter player, Fighter enemy, List<Fighter> enemyTeam, int teamNumber)
 		{
 			var random = new Random();
@@ -127,10 +77,11 @@ namespace MortalKombat
 					{
 						Console.WriteLine($"{teamNumber}. {player.Name} a ripostat impotriva lui {enemy.Name} provocand daune de {damage}!");
 					}
-					enemy.HP -= damage;
+					//enemy.HP -= damage;
+					enemy.GotHit(damage);
 				}
 			}
-			enemy.GotHit(player);
+			//enemy.GotHit(player);
 		}
 
 		private void Fight()
@@ -143,7 +94,6 @@ namespace MortalKombat
 				Fighter fighter1 = FirstTeam[player1];
 				Fighter fighter2 = SecondTeam[player2];
 
-				//FirstPlayerAttacks(fighter1, fighter2);
 				PlayerAttacks(fighter1, fighter2, SecondTeam, 1);
 				if (fighter2.HP <= 0f)
 				{
@@ -153,7 +103,6 @@ namespace MortalKombat
 				}
 				else
 				{
-					//SecondPlayerAttacks(fighter1, fighter2);
 					PlayerAttacks(fighter2, fighter1, FirstTeam, 2);
 					if (fighter1.HP <= 0f)
 					{
