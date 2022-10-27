@@ -42,7 +42,6 @@ namespace MortalKombat.Fighters
 			if (2 * Agility < attack)
 			{
 				Console.WriteLine($"{Name} pareaza lovitura lui {enemy.Name} si primeste 70% damage");
-				//HP -= 0.7f * attack;
 				this.GotHit(0.7f * attack);
 			}
 			else
@@ -68,7 +67,6 @@ namespace MortalKombat.Fighters
 				Console.WriteLine();
 				Console.WriteLine($"[SPECIAL ABILITY] {Name} a sarit langa {fighter.Name} si a aplicat atacul dublu - {Power * 2f} daune");
 				Console.WriteLine();
-				//fighter.HP -= 2 * Power;
 				fighter.GotHit(2 * Power);
 			}
 			else
@@ -76,7 +74,6 @@ namespace MortalKombat.Fighters
 				var random = new Random();
 				float daune1 = random.Next((int)Power / 3, (int)Power);
 				Console.WriteLine($"Special ability. {Name} a cauzat {daune1} daune lui {fighter.Name}!");
-				//fighter.HP -= daune1;
 				fighter.GotHit(daune1);
 			}
 		}

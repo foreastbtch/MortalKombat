@@ -194,9 +194,9 @@ namespace UnitTests
 			var sut = new MortalKombat.Fighters.Monster("Test", 3);
 			var power = sut.Power;
 			var enemyPower = enemy.Power;
-			sut.GotHit(enemy);
-			sut.GotHit(enemy);
-			sut.GotHit(enemy);
+			sut.GotHit(0);
+			sut.GotHit(0);
+			sut.GotHit(0);
 
 			sut.SpecialAbility(enemy, new List<Fighter>());
 

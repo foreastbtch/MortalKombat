@@ -77,11 +77,9 @@ namespace MortalKombat
 					{
 						Console.WriteLine($"{teamNumber}. {player.Name} a ripostat impotriva lui {enemy.Name} provocand daune de {damage}!");
 					}
-					//enemy.HP -= damage;
 					enemy.GotHit(damage);
 				}
 			}
-			//enemy.GotHit(player);
 		}
 
 		private void Fight()

@@ -63,7 +63,6 @@ namespace MortalKombat.Fighters
 				var random = new Random();
 				float daune1 = random.Next((int)Power / 3, (int)Power);
 				Console.WriteLine($"Special ability. {Name} a cauzat {daune1} daune lui {fighter.Name}!");
-				//fighter.HP -= daune1;
 				fighter.GotHit(daune1);
 			}
 		}
