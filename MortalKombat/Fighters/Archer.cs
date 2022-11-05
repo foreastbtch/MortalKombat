@@ -29,7 +29,7 @@ namespace MortalKombat.Fighters
 					break;
 			}
 		}
-		public override object Clone()
+		public override Fighter Clone()
 		{
 			return new Archer(Name, gradArc);
 		}

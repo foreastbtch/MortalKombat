@@ -8,15 +8,17 @@ namespace MortalKombat
 {
 	internal class Menu
 	{
-		public List<Fighter>? Fighters { get; set; }
-		public List<Arena>? Arenas { get; set; }
+		//o lista poate fi null
+		public List<Fighter> Fighters { get; set; }
+		public List<Arena> Arenas { get; set; }
 		public int Option { get; set; }
 
-		public Arena? Arena { get; set; }
-		public List<Fighter>? Team1 { get; set; }
-		public List<Fighter>? Team2 { get; set; }
+		//orice obiect poate fi null
+		public Arena Arena { get; set; }
+		public List<Fighter> Team1 { get; set; }
+		public List<Fighter> Team2 { get; set; }
 
-		public Menu(List<Fighter>? fighters, List<Arena>? arenas)
+		public Menu(List<Fighter> fighters, List<Arena> arenas)
 		{
 			Fighters = fighters;
 			Arenas = arenas;
@@ -76,16 +78,14 @@ namespace MortalKombat
 								Arena.FirstTeam = new List<Fighter>();
 								foreach (Fighter fighter in Team1)
 								{
-									Arena.FirstTeam.Add((Fighter)fighter.Clone());
+									Arena.FirstTeam.Add(fighter.Clone());
 								}
 								Arena.SecondTeam = new List<Fighter>();
 								foreach (Fighter fighter in Team2)
 								{
-									Arena.SecondTeam.Add((Fighter)fighter.Clone());
+									Arena.SecondTeam.Add(fighter.Clone());
 								}
 								Arena.StartTheFight();
-								/*Team1.Clear();
-                                Team2.Clear();*/
 							}
 						}
 						break;

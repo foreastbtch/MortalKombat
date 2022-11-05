@@ -32,7 +32,7 @@ namespace MortalKombat.Fighters
 			}
 		}
 
-		public override object Clone()
+		public override Fighter Clone()
 		{
 			return new Ninja(Name, gradShuriken);
 		}

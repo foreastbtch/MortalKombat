@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MortalKombat
 {
-	public abstract class Fighter : ICloneable
+	public abstract class Fighter
 	{
 		public string Name { get; set; }
 		public float HP { get; set; }
@@ -34,7 +34,7 @@ namespace MortalKombat
 			Agility = agility;
 		}
 
-		public abstract object Clone();
+		public abstract Fighter Clone();
 		public abstract void SpecialAbility(Fighter fighter, List<Fighter> enemies);
 		public abstract void Deff(float attack, Fighter enemy);
 		public abstract void SayLine();

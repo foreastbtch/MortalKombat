@@ -50,7 +50,7 @@ namespace MortalKombat.Fighters
 					break;
 			}
 		}
-		public override object Clone()
+		public override Fighter Clone()
 		{
 			return new Warrior(Name, gradArmura, gradArma);
 		}
