@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MortalKombat
+﻿namespace MortalKombat
 {
 	internal class Menu
 	{
-		public List<Fighter>? Fighters { get; set; }
-		public List<Arena>? Arenas { get; set; }
+		public List<Fighter> Fighters { get; set; }
+		public List<Arena> Arenas { get; set; }
 		public int Option { get; set; }
 
-		public Arena? Arena { get; set; }
-		public List<Fighter>? Team1 { get; set; }
-		public List<Fighter>? Team2 { get; set; }
+		public Arena Arena { get; set; }
+		public List<Fighter> Team1 { get; set; }
+		public List<Fighter> Team2 { get; set; }
 
-		public Menu(List<Fighter>? fighters, List<Arena>? arenas)
+		public Menu(List<Fighter> fighters, List<Arena> arenas)
 		{
 			Fighters = fighters;
 			Arenas = arenas;
@@ -76,12 +70,12 @@ namespace MortalKombat
 								Arena.FirstTeam = new List<Fighter>();
 								foreach (Fighter fighter in Team1)
 								{
-									Arena.FirstTeam.Add((Fighter)fighter.Clone());
+									Arena.FirstTeam.Add(fighter.Clone());
 								}
 								Arena.SecondTeam = new List<Fighter>();
 								foreach (Fighter fighter in Team2)
 								{
-									Arena.SecondTeam.Add((Fighter)fighter.Clone());
+									Arena.SecondTeam.Add(fighter.Clone());
 								}
 								Arena.StartTheFight();
 								/*Team1.Clear();

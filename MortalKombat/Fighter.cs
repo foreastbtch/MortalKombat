@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MortalKombat
+﻿namespace MortalKombat
 {
-	public abstract class Fighter : ICloneable
+	public abstract class Fighter
 	{
 		public string Name { get; set; }
 		public float HP { get; set; }
@@ -34,7 +27,7 @@ namespace MortalKombat
 			Agility = agility;
 		}
 
-		public abstract object Clone();
+		public abstract Fighter Clone();
 		public abstract void SpecialAbility(Fighter fighter, List<Fighter> enemies);
 		public abstract void Deff(float attack, Fighter enemy);
 		public abstract void SayLine();

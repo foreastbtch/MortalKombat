@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-
-namespace MortalKombat.Fighters
+﻿namespace MortalKombat.Fighters
 {
 	public class Ninja : Fighter
 	{
@@ -32,7 +25,7 @@ namespace MortalKombat.Fighters
 			}
 		}
 
-		public override object Clone()
+		public override Fighter Clone()
 		{
 			return new Ninja(Name, gradShuriken);
 		}

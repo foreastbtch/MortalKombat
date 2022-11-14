@@ -1,7 +1,6 @@
 ﻿using Moq;
 using MortalKombat;
 using MortalKombat.Fighters;
-using System;
 using Xunit;
 
 namespace UnitTests
@@ -12,7 +11,7 @@ namespace UnitTests
 		public void ArcherConstructor_ShouldInitializePowerWith100WhenGradArcIs0()
 		{
 			//arrange
-			var sut = new MortalKombat.Fighters.Archer("Test", 0);
+			var sut = new Archer("Test", 0);
 
 			//act
 			var actual = sut.Power;
@@ -25,7 +24,7 @@ namespace UnitTests
 		public void ArcherConstructor_ShouldInitializePowerWith125WhenGradArcIs1()
 		{
 			//arrange
-			var sut = new MortalKombat.Fighters.Archer("Test", 1);
+			var sut = new Archer("Test", 1);
 
 			//act
 			var actual = sut.Power;
@@ -38,7 +37,7 @@ namespace UnitTests
 		public void ArcherConstructor_ShouldInitializePowerWith135WhenGradArcIs2()
 		{
 			//arrange
-			var sut = new MortalKombat.Fighters.Archer("Test", 2);
+			var sut = new Archer("Test", 2);
 
 			//act
 			var actual = sut.Power;
@@ -51,7 +50,7 @@ namespace UnitTests
 		public void ArcherConstructor_ShouldInitializePowerWith150WhenGradArcIs3()
 		{
 			//arrange
-			var sut = new MortalKombat.Fighters.Archer("Test", 3);
+			var sut = new Archer("Test", 3);
 
 			//act
 			var actual = sut.Power;
@@ -65,7 +64,7 @@ namespace UnitTests
 		{
 			//arrange
 			var mock = new Mock<Warrior>();
-			var sut = new MortalKombat.Fighters.Archer("Test", 3);
+			var sut = new Archer("Test", 3);
 			var hp = sut.HP;
 			sut.Deff(100, mock.Object);
 
@@ -143,7 +142,7 @@ namespace UnitTests
 		{
 			//arrange
 			var mock = new Mock<Warrior>();
-			var sut = new MortalKombat.Fighters.Mage("Test", 3);
+			var sut = new Mage("Test", 3);
 			var hp = sut.HP;
 			sut.Deff(100, mock.Object);
 
@@ -159,7 +158,7 @@ namespace UnitTests
 		{
 			//arrange
 			var mock = new Mock<Warrior>();
-			var sut = new MortalKombat.Fighters.Mage("Test", 3);
+			var sut = new Mage("Test", 3);
 			var power = sut.Power;
 			sut.SpecialAbility(mock.Object, new List<Fighter>());
 
@@ -175,7 +174,7 @@ namespace UnitTests
 		{
 			//arrange
 			var mock = new Mock<Warrior>();
-			var sut = new MortalKombat.Fighters.Monster("Test", 3);
+			var sut = new Monster("Test", 3);
 			var hp = sut.HP;
 			sut.Deff(100, mock.Object);
 
@@ -191,7 +190,7 @@ namespace UnitTests
 		{
 			//arrange
 			var enemy = new Warrior("enemy", 0, 0);
-			var sut = new MortalKombat.Fighters.Monster("Test", 3);
+			var sut = new Monster("Test", 3);
 			var power = sut.Power;
 			var enemyPower = enemy.Power;
 			sut.GotHit(0);
@@ -215,7 +214,7 @@ namespace UnitTests
 			//arrange
 			var enemy = new Warrior();
 			//enemy.Agility = 0;
-			var sut = new MortalKombat.Fighters.Ninja("Test", 3);
+			var sut = new Ninja("Test", 3);
 			var hp = sut.HP;
 			sut.Deff(100, enemy);
 
@@ -231,7 +230,7 @@ namespace UnitTests
 		{
 			//arrange
 			var enemy = new Warrior();
-			var sut = new MortalKombat.Fighters.Ninja("Test", 3);
+			var sut = new Ninja("Test", 3);
 			var hp = sut.HP;
 			sut.Deff(105, enemy);
 
@@ -248,7 +247,7 @@ namespace UnitTests
 			//arrange
 			var enemy = new Warrior("enemy", 0, 0);
 			enemy.Agility = 0;
-			var sut = new MortalKombat.Fighters.Ninja("Test", 3);
+			var sut = new Ninja("Test", 3);
 			var hp = enemy.HP;
 
 			sut.SpecialAbility(enemy, new List<Fighter>());
@@ -265,7 +264,7 @@ namespace UnitTests
 		{
 			//arrange
 			var mock = new Mock<Warrior>();
-			var sut = new MortalKombat.Fighters.Warrior("Test", 3, 3);
+			var sut = new Warrior("Test", 3, 3);
 			var hp = sut.HP;
 			sut.Deff(100, mock.Object);
 

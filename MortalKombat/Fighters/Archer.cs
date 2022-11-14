@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MortalKombat.Fighters
+﻿namespace MortalKombat.Fighters
 {
 	public class Archer : Fighter
 	{
@@ -29,7 +23,7 @@ namespace MortalKombat.Fighters
 					break;
 			}
 		}
-		public override object Clone()
+		public override Fighter Clone()
 		{
 			return new Archer(Name, gradArc);
 		}

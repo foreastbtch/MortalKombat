@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MortalKombat
+﻿namespace MortalKombat
 {
 	public class Arena
 	{
@@ -51,7 +45,7 @@ namespace MortalKombat
 			Generics();
 		}
 
-		private void PlayerAttacks(Fighter player, Fighter enemy, List<Fighter> enemyTeam, int teamNumber)
+		public void PlayerAttacks(Fighter player, Fighter enemy, List<Fighter> enemyTeam, int teamNumber)
 		{
 			var random = new Random();
 			int abilityChance = random.Next(0, player.Agility);
